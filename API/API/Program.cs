@@ -47,4 +47,41 @@ app.MapPost("/api/produto/cadastrar",
     return Results.Created("", produto);
 });
 
+// DELETE: http://localhost:5155/api/produto/remover/
+app.MapDelete("/api/produto/remover/{id}", (string id) =>
+{
+    foreach (Produto produtoRemover in produtos)
+    {
+        if(produtoRemover.Id == id)
+        {
+            produtos.Remove(produtoRemover);
+            return Results.Ok(produtoRemover);
+        }
+    }
+    // Produto não encontrado
+    return Results.NotFound("Produto não encontrado!");
+});
+
+// PATCH: http://localhost:5155/api/produto/atualizar/{id}
+app.MapPut("/api/produto/atualizar/{id}", (string id, Produto produto) =>
+{
+
+    foreach (Produto produtoCadastrado in produtos)
+    {
+        if (produtoCadastrado.Id == id)
+        {
+            produtoCadastrado.Nome = produto.Nome;
+            produtoCadastrado.Descricao = produto.Descricao;
+            produtoCadastrado.Valor = produto.Valor;
+         
+            return Results.Ok(produtoCadastrado);
+        }
+    }
+
+ 
+        return Results.NotFound("Produto não encontrado!");
+
+});
+
+
 app.Run();
