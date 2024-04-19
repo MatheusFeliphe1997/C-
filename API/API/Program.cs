@@ -19,7 +19,7 @@ produtos.Add(new Produto("Notebook", "Avell", 5000));
 //GET: http://localhost:5155
 app.MapGet("/", () => "Minha primeira API em C# com watch");
 
-//GET: http://localhost:5155/api/produto/listar
+//GET: http://localhost:5155/api/p roduto/listar
 app.MapGet("/api/produto/listar", () => 
     produtos);
 
