@@ -1,6 +1,10 @@
 using API.Models;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AppDataContext>();
+
 var app = builder.Build();
 
 Produto produto = new Produto();
@@ -38,11 +42,11 @@ app.MapGet("/api/produto/buscar/{id}", (string id) =>
 });
 
 //POST: http://localhost:5155/api/produto/cadastrar
-app.MapPost("/api/produto/cadastrar", 
-(Produto produto) =>
+app.MapPost("/api/produto/cadastrar", ([FromBody] Produto produto, [FromServices] AppDataContext ctx) =>
 {
    
-    produtos.Add(produto);
+    ctx.Produtos.Add(produto);
+    ctx.SaveChanges();
 
     return Results.Created("", produto);
 });

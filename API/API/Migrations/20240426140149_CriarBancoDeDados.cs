@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace API.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class CriarBancoDeDados : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,7 +19,8 @@ namespace API.Migrations
                     Nome = table.Column<string>(type: "TEXT", nullable: false),
                     Descricao = table.Column<string>(type: "TEXT", nullable: false),
                     Valor = table.Column<double>(type: "REAL", nullable: false),
-                    CriadoEm = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    CriadoEm = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Quantidade = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

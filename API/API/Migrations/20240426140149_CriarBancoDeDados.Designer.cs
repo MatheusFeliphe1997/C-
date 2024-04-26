@@ -10,9 +10,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
-    [Migration("20240419141108_InitialCreate")]
-    partial class InitialCreate
+    [DbContext(typeof(AppDataContext))]
+    [Migration("20240426140149_CriarBancoDeDados")]
+    partial class CriarBancoDeDados
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,6 +35,9 @@ namespace API.Migrations
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("INTEGER");
 
                     b.Property<double>("Valor")
                         .HasColumnType("REAL");

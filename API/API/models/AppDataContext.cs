@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 namespace API.Models;
-public class AppDbContext : DbContext
+public class AppDataContext : DbContext
 {
     public DbSet<Produto> Produtos { get; set; }
 
